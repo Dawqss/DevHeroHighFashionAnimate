@@ -26,6 +26,8 @@ APP.devHeroAnimate = ->
 
     $(window).resize ->
       this.windowHeight = $(window).height()
+      this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100))
+      this.AnimationArea.posY = AnimationArea.posX + windowHeight
 
     AnimationArea = {}
     AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100))

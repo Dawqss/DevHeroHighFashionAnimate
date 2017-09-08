@@ -32,7 +32,9 @@
       }
       posTopOfElement = $(element).offset().top;
       $(window).resize(function() {
-        return this.windowHeight = $(window).height();
+        this.windowHeight = $(window).height();
+        this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
+        return this.AnimationArea.posY = AnimationArea.posX + windowHeight;
       });
       AnimationArea = {};
       AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
