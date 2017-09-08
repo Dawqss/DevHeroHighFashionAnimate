@@ -17,7 +17,7 @@
         config.direction = 'up';
       }
       if (config.range == null) {
-        config.range = 50;
+        config.range = 0;
       }
       if (config.offset == null) {
         config.offset = 30;

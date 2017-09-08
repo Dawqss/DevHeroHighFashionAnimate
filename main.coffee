@@ -12,7 +12,7 @@ APP.devHeroAnimate = ->
     if !config.direction?
       config.direction = 'up'
     if !config.range?
-      config.range = 50
+      config.range = 0
     if !config.offset?
       config.offset = 30
     if config.range == 0
