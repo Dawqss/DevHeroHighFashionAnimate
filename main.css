@@ -1,0 +1,46 @@
+.element {
+    height: 250px;
+}
+
+.green {
+    background: darkseagreen;
+    margin-top: 300px;
+}
+
+.yellow {
+    background: darkseagreen;
+    margin-top: 450px;
+}
+
+.blue {
+    background: darkseagreen;
+    margin-top: 600px;
+}
+
+.wrapper {
+    background: darkgrey;
+}
+
+.rail {
+    border: 2px solid rebeccapurple;
+    position: relative;
+}
+
+.container {
+    background: whitesmoke;
+}
+
+.posXelement {
+    height: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: red;
+}
+.posYelement {
+    height: 2px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: blue;
+}
