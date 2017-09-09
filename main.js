@@ -31,15 +31,16 @@
         direction = -1;
       }
       posTopOfElement = $(element).offset().top;
+      AnimationArea = {};
+      AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
+      AnimationArea.posY = AnimationArea.posX + windowHeight;
       $(window).resize(function() {
         this.windowHeight = $(window).height();
+        this.posTopOfElement = $(element).offset().top;
         this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
         this.AnimationArea.posY = AnimationArea.posX + windowHeight;
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
-      AnimationArea = {};
-      AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
-      AnimationArea.posY = AnimationArea.posX + windowHeight;
       checkIfIsInArea = function(index, WindowAreaTop, WindowAreaBottom, AnimationAreaTop, AnimationAreaBottom, element, direction, range) {
         if ((WindowAreaTop < AnimationAreaTop && WindowAreaBottom < AnimationAreaTop) || (WindowAreaTop > AnimationAreaBottom && WindowAreaBottom > AnimationAreaBottom)) {
           return false;
