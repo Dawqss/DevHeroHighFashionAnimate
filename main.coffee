@@ -28,6 +28,7 @@ APP.devHeroAnimate = ->
       this.windowHeight = $(window).height()
       this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100))
       this.AnimationArea.posY = AnimationArea.posX + windowHeight
+      checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
     AnimationArea = {}
     AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100))
@@ -53,6 +54,7 @@ APP.devHeroAnimate = ->
       WindowArea.posY = WindowArea.posX + $(window).height()
       checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
+    checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
 APP.init = ->
   APP.devHeroAnimate()

@@ -34,7 +34,8 @@
       $(window).resize(function() {
         this.windowHeight = $(window).height();
         this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
-        return this.AnimationArea.posY = AnimationArea.posX + windowHeight;
+        this.AnimationArea.posY = AnimationArea.posX + windowHeight;
+        return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
       AnimationArea = {};
       AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
@@ -54,13 +55,14 @@
       translateElement = function(element, percentView, direction, range) {
         return $(element).css('transform', 'translateY(' + (percentView * direction * range) + '%)');
       };
-      return $(window).scroll(function() {
+      $(window).scroll(function() {
         var WindowArea;
         WindowArea = {};
         WindowArea.posX = $(window).scrollTop();
         WindowArea.posY = WindowArea.posX + $(window).height();
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
+      return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
     });
   };
 
