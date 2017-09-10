@@ -31,16 +31,12 @@
         direction = -1;
       }
       posTopOfElement = $(element).offset().top;
+      $(window).resize(function() {
+        return this.windowHeight = $(window).height();
+      });
       AnimationArea = {};
       AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
       AnimationArea.posY = AnimationArea.posX + windowHeight;
-      $(window).resize(function() {
-        this.windowHeight = $(window).height();
-        this.posTopOfElement = $(element).offset().top;
-        this.AnimationArea.posX = posTopOfElement - (windowHeight * (config.offset / 100));
-        this.AnimationArea.posY = AnimationArea.posX + windowHeight;
-        return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
-      });
       checkIfIsInArea = function(index, WindowAreaTop, WindowAreaBottom, AnimationAreaTop, AnimationAreaBottom, element, direction, range) {
         if ((WindowAreaTop < AnimationAreaTop && WindowAreaBottom < AnimationAreaTop) || (WindowAreaTop > AnimationAreaBottom && WindowAreaBottom > AnimationAreaBottom)) {
           return false;
@@ -56,14 +52,13 @@
       translateElement = function(element, percentView, direction, range) {
         return $(element).css('transform', 'translateY(' + (percentView * direction * range) + '%)');
       };
-      $(window).scroll(function() {
+      return $(window).scroll(function() {
         var WindowArea;
         WindowArea = {};
         WindowArea.posX = $(window).scrollTop();
         WindowArea.posY = WindowArea.posX + $(window).height();
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
-      return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
     });
   };
 
