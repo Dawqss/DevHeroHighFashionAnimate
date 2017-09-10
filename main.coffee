@@ -2,6 +2,20 @@ APP = undefined
 
 APP = {}
 
+
+APP.AnimationsWaypoints = ->
+  elLeft = $('body').find('[waypoint-devhero]')
+
+  elements = []
+  $.each elUp, (key, value) ->
+    elementsUp.push(new Waypoint(
+      element: $(value)
+      handler: (direction) ->
+        $(this.element).addClass('bounceInUp animated--opacity-after')
+        return
+      offset: '70%'
+    ))
+
 APP.devHeroAnimate = ->
   animationElementArray = $(document).find('[devhero-animate]')
   $.each animationElementArray, (index, element) ->
@@ -21,6 +35,8 @@ APP.devHeroAnimate = ->
       direction = 1
     else if config.direction == 'down'
       direction = -1
+
+    windowHeight = $(window).height()
 
     posTopOfElement = $(element).offset().top
 

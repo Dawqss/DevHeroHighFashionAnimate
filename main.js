@@ -6,11 +6,26 @@
 
   APP = {};
 
+  APP.AnimationsWaypoints = function() {
+    var elLeft, elements;
+    elLeft = $('body').find('[waypoint-devhero]');
+    elements = [];
+    return $.each(elUp, function(key, value) {
+      return elementsUp.push(new Waypoint({
+        element: $(value),
+        handler: function(direction) {
+          $(this.element).addClass('bounceInUp animated--opacity-after');
+        },
+        offset: '70%'
+      }));
+    });
+  };
+
   APP.devHeroAnimate = function() {
     var animationElementArray;
     animationElementArray = $(document).find('[devhero-animate]');
     return $.each(animationElementArray, function(index, element) {
-      var AnimationArea, checkIfIsInArea, checkPercentOfScrollArea, config, configRaw, direction, posTopOfElement, translateElement;
+      var AnimationArea, checkIfIsInArea, checkPercentOfScrollArea, config, configRaw, direction, posTopOfElement, translateElement, windowHeight;
       configRaw = $(element).attr('devhero-animate');
       config = $.parseJSON(configRaw);
       if (config.direction == null) {
@@ -30,6 +45,7 @@
       } else if (config.direction === 'down') {
         direction = -1;
       }
+      windowHeight = $(window).height();
       posTopOfElement = $(element).offset().top;
       $(window).resize(function() {
         return this.windowHeight = $(window).height();
