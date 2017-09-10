@@ -67,6 +67,10 @@ APP.devHeroAnimate = ->
       WindowArea.posY = WindowArea.posX + $(window).height()
       checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
+    WindowArea = {}
+    WindowArea.posX = $(window).scrollTop()
+    WindowArea.posY = WindowArea.posX + $(window).height()
+    checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
 APP.init = ->
   APP.devHeroAnimate()

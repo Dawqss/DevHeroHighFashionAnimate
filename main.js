@@ -25,7 +25,7 @@
     var animationElementArray;
     animationElementArray = $(document).find('[devhero-animate]');
     return $.each(animationElementArray, function(index, element) {
-      var AnimationArea, checkIfIsInArea, checkPercentOfScrollArea, config, configRaw, direction, posTopOfElement, translateElement, windowHeight;
+      var AnimationArea, WindowArea, checkIfIsInArea, checkPercentOfScrollArea, config, configRaw, direction, posTopOfElement, translateElement, windowHeight;
       configRaw = $(element).attr('devhero-animate');
       config = $.parseJSON(configRaw);
       if (config.direction == null) {
@@ -68,13 +68,17 @@
       translateElement = function(element, percentView, direction, range) {
         return $(element).css('transform', 'translateY(' + (percentView * direction * range) + '%)');
       };
-      return $(window).scroll(function() {
+      $(window).scroll(function() {
         var WindowArea;
         WindowArea = {};
         WindowArea.posX = $(window).scrollTop();
         WindowArea.posY = WindowArea.posX + $(window).height();
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
+      WindowArea = {};
+      WindowArea.posX = $(window).scrollTop();
+      WindowArea.posY = WindowArea.posX + $(window).height();
+      return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
     });
   };
 
