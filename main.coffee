@@ -8,15 +8,17 @@ APP.AnimationsWaypoints = ->
 
   elementsWaypoint = []
 
-  $.each elements, (key, value) ->
-
-#    elementsUp.push(new Waypoint(
-#      element: $(value)
-#      handler: (direction) ->
-#        $(this.element).addClass('bounceInUp animated--opacity-after')
-#        return
-#      offset: '70%'
-#    ))
+  $.each elements, (index, element) ->
+    configRaw = $(element).attr('waypoint-devhero')
+    config = $.parseJSON(configRaw)
+    elementsWaypoint.push(new Waypoint(
+      element: $(element)
+      handler: (direction) ->
+        $(this.element).css('animation-delay', config.delay + 's')
+        $(this.element).addClass(config.type + ' ' + 'animate animate-start')
+        return
+      offset: config.offset + '%'
+    ))
 
 APP.devHeroAnimate = ->
   animationElementArray = $(document).find('[devhero-animate]')
@@ -76,6 +78,7 @@ APP.devHeroAnimate = ->
 
 APP.init = ->
   APP.devHeroAnimate()
+  APP.AnimationsWaypoints()
   return
 
 $(document).ready ->

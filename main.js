@@ -10,7 +10,19 @@
     var elements, elementsWaypoint;
     elements = $('body').find('[waypoint-devhero]');
     elementsWaypoint = [];
-    return $.each(elements, function(key, value) {});
+    return $.each(elements, function(index, element) {
+      var config, configRaw;
+      configRaw = $(element).attr('waypoint-devhero');
+      config = $.parseJSON(configRaw);
+      return elementsWaypoint.push(new Waypoint({
+        element: $(element),
+        handler: function(direction) {
+          $(this.element).css('animation-delay', config.delay + 's');
+          $(this.element).addClass(config.type + ' ' + 'animate animate-start');
+        },
+        offset: config.offset + '%'
+      }));
+    });
   };
 
   APP.devHeroAnimate = function() {
@@ -75,6 +87,7 @@
 
   APP.init = function() {
     APP.devHeroAnimate();
+    APP.AnimationsWaypoints();
   };
 
   $(document).ready(function() {

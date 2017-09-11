@@ -44,3 +44,12 @@
     right: 0;
     background: blue;
 }
+
+
+.animate-init {
+    visibility: hidden;
+}
+
+.animate-start {
+    visibility: visible;
+}
