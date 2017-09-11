@@ -4,17 +4,19 @@ APP = {}
 
 
 APP.AnimationsWaypoints = ->
-  elLeft = $('body').find('[waypoint-devhero]')
+  elements = $('body').find('[waypoint-devhero]')
 
-  elements = []
-  $.each elUp, (key, value) ->
-    elementsUp.push(new Waypoint(
-      element: $(value)
-      handler: (direction) ->
-        $(this.element).addClass('bounceInUp animated--opacity-after')
-        return
-      offset: '70%'
-    ))
+  elementsWaypoint = []
+
+  $.each elements, (key, value) ->
+
+#    elementsUp.push(new Waypoint(
+#      element: $(value)
+#      handler: (direction) ->
+#        $(this.element).addClass('bounceInUp animated--opacity-after')
+#        return
+#      offset: '70%'
+#    ))
 
 APP.devHeroAnimate = ->
   animationElementArray = $(document).find('[devhero-animate]')
@@ -26,19 +28,17 @@ APP.devHeroAnimate = ->
     if !config.direction?
       config.direction = 'up'
     if !config.range?
-      config.range = 0
+      config.range = 50
     if !config.offset?
       config.offset = 30
-    if config.range == 0
-      config.range = 1
     if config.direction == 'up'
       direction = 1
     else if config.direction == 'down'
       direction = -1
 
-    windowHeight = $(window).height()
-
     posTopOfElement = $(element).offset().top
+
+    windowHeight = $(window).height()
 
     $(window).resize ->
       this.windowHeight = $(window).height()
@@ -65,11 +65,13 @@ APP.devHeroAnimate = ->
       WindowArea = {}
       WindowArea.posX = $(window).scrollTop()
       WindowArea.posY = WindowArea.posX + $(window).height()
+      console.log(windowHeight)
       checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
     WindowArea = {}
     WindowArea.posX = $(window).scrollTop()
     WindowArea.posY = WindowArea.posX + $(window).height()
+    console.log()
     checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
 APP.init = ->

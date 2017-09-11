@@ -7,18 +7,10 @@
   APP = {};
 
   APP.AnimationsWaypoints = function() {
-    var elLeft, elements;
-    elLeft = $('body').find('[waypoint-devhero]');
-    elements = [];
-    return $.each(elUp, function(key, value) {
-      return elementsUp.push(new Waypoint({
-        element: $(value),
-        handler: function(direction) {
-          $(this.element).addClass('bounceInUp animated--opacity-after');
-        },
-        offset: '70%'
-      }));
-    });
+    var elements, elementsWaypoint;
+    elements = $('body').find('[waypoint-devhero]');
+    elementsWaypoint = [];
+    return $.each(elements, function(key, value) {});
   };
 
   APP.devHeroAnimate = function() {
@@ -32,21 +24,18 @@
         config.direction = 'up';
       }
       if (config.range == null) {
-        config.range = 0;
+        config.range = 50;
       }
       if (config.offset == null) {
         config.offset = 30;
-      }
-      if (config.range === 0) {
-        config.range = 1;
       }
       if (config.direction === 'up') {
         direction = 1;
       } else if (config.direction === 'down') {
         direction = -1;
       }
-      windowHeight = $(window).height();
       posTopOfElement = $(element).offset().top;
+      windowHeight = $(window).height();
       $(window).resize(function() {
         return this.windowHeight = $(window).height();
       });
@@ -73,11 +62,13 @@
         WindowArea = {};
         WindowArea.posX = $(window).scrollTop();
         WindowArea.posY = WindowArea.posX + $(window).height();
+        console.log(windowHeight);
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
       WindowArea = {};
       WindowArea.posX = $(window).scrollTop();
       WindowArea.posY = WindowArea.posX + $(window).height();
+      console.log();
       return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
     });
   };
