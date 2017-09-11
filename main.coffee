@@ -8,6 +8,8 @@ APP.AnimationsWaypoints = ->
 
   elementsWaypoint = []
 
+  console.log(elements)
+
   $.each elements, (index, element) ->
     configRaw = $(element).attr('waypoint-devhero')
     config = $.parseJSON(configRaw)
@@ -67,13 +69,11 @@ APP.devHeroAnimate = ->
       WindowArea = {}
       WindowArea.posX = $(window).scrollTop()
       WindowArea.posY = WindowArea.posX + $(window).height()
-      console.log(windowHeight)
       checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
     WindowArea = {}
     WindowArea.posX = $(window).scrollTop()
     WindowArea.posY = WindowArea.posX + $(window).height()
-    console.log()
     checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range)
 
 APP.init = ->

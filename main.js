@@ -10,6 +10,7 @@
     var elements, elementsWaypoint;
     elements = $('body').find('[waypoint-devhero]');
     elementsWaypoint = [];
+    console.log(elements);
     return $.each(elements, function(index, element) {
       var config, configRaw;
       configRaw = $(element).attr('waypoint-devhero');
@@ -74,13 +75,11 @@
         WindowArea = {};
         WindowArea.posX = $(window).scrollTop();
         WindowArea.posY = WindowArea.posX + $(window).height();
-        console.log(windowHeight);
         return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
       });
       WindowArea = {};
       WindowArea.posX = $(window).scrollTop();
       WindowArea.posY = WindowArea.posX + $(window).height();
-      console.log();
       return checkIfIsInArea(index, WindowArea.posX, WindowArea.posY, AnimationArea.posX, AnimationArea.posY, element, direction, config.range);
     });
   };
